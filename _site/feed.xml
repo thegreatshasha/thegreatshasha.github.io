@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-07-10T16:40:18+01:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Your awesome title</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><entry><title type="html">Welcome to Jekyll!</title><link href="http://localhost:4000/jekyll/update/2020/07/10/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Welcome to Jekyll!" /><published>2020-07-10T16:27:10+01:00</published><updated>2020-07-10T16:27:10+01:00</updated><id>http://localhost:4000/jekyll/update/2020/07/10/welcome-to-jekyll</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2020/07/10/welcome-to-jekyll.html">&lt;p&gt;In N-dimensional simplex noise, the squared kernel summation radius $r^2$ is $\frac 1 2$
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-07-10T17:58:58+01:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Your awesome title</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><entry><title type="html">Welcome to Jekyll!</title><link href="http://localhost:4000/jekyll/update/2020/07/10/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Welcome to Jekyll!" /><published>2020-07-10T16:27:10+01:00</published><updated>2020-07-10T16:27:10+01:00</updated><id>http://localhost:4000/jekyll/update/2020/07/10/welcome-to-jekyll</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2020/07/10/welcome-to-jekyll.html">&lt;p&gt;In N-dimensional simplex noise, the squared kernel summation radius $r^2$ is $\frac 1 2$
 for all values of N. This is because the edge length of the N-simplex $s = \sqrt {\frac {N} {N + 1}}$
 divides out of the N-simplex height $h = s \sqrt {\frac {N + 1} {2N}}$.
 The kerel summation radius $r$ is equal to the N-simplex height $h$.&lt;/p&gt;
@@ -21,4 +21,38 @@ The kerel summation radius $r$ is equal to the N-simplex height $h$.&lt;/p&gt;
 &lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Tom'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints 'Hi, Tom' to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;Check out the &lt;a href=&quot;https://jekyllrb.com/docs/home&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://talk.jekyllrb.com/&quot;&gt;Jekyll Talk&lt;/a&gt;.&lt;/p&gt;</content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html">In N-dimensional simplex noise, the squared kernel summation radius $r^2$ is $\frac 1 2$ for all values of N. This is because the edge length of the N-simplex $s = \sqrt {\frac {N} {N + 1}}$ divides out of the N-simplex height $h = s \sqrt {\frac {N + 1} {2N}}$. The kerel summation radius $r$ is equal to the N-simplex height $h$.</summary></entry></feed>
+&lt;p&gt;Check out the &lt;a href=&quot;https://jekyllrb.com/docs/home&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://talk.jekyllrb.com/&quot;&gt;Jekyll Talk&lt;/a&gt;.&lt;/p&gt;</content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html">In N-dimensional simplex noise, the squared kernel summation radius $r^2$ is $\frac 1 2$ for all values of N. This is because the edge length of the N-simplex $s = \sqrt {\frac {N} {N + 1}}$ divides out of the N-simplex height $h = s \sqrt {\frac {N + 1} {2N}}$. The kerel summation radius $r$ is equal to the N-simplex height $h$.</summary></entry><entry><title type="html">A test. Does html work in jekyll _posts?</title><link href="http://localhost:4000/misc/2020/07/10/conway-test.html" rel="alternate" type="text/html" title="A test. Does html work in jekyll _posts?" /><published>2020-07-10T00:00:00+01:00</published><updated>2020-07-10T00:00:00+01:00</updated><id>http://localhost:4000/misc/2020/07/10/conway-test</id><content type="html" xml:base="http://localhost:4000/misc/2020/07/10/conway-test.html">&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;style&gt;
+.button {
+  background-color: black;
+  border: none;
+  color: white;
+  padding: none;
+  height: 25px;
+  width: 25px
+  display: block;
+  float: left;
+}
+.start_button {
+  background-color: green;
+  border: none;
+  color: black;
+}
+.stop_button {
+  background-color: red;
+  border: none;
+  color: black;
+}
+&lt;/style&gt;
+
+&lt;/head&gt;
+
+&lt;body&gt;
+&lt;div&gt;​ &lt;input id=&quot;start&quot; class=&quot;button start_button&quot; value=&quot;Start&quot; type=&quot;button&quot;&gt; &lt;input id=&quot;stop&quot; class=&quot;button stop_button&quot; value=&quot;Stop&quot; type=&quot;button&quot;&gt; &lt;input id=&quot;clear&quot; class=&quot;button stop_button&quot; value=&quot;Clear&quot; type=&quot;button&quot;&gt; &lt;input id=&quot;example&quot; class=&quot;button start_button&quot; value=&quot;Example&quot; type=&quot;button&quot;&gt; &lt;input id=&quot;random&quot; class=&quot;button start_button&quot; value=&quot;Random&quot; type=&quot;button&quot;&gt; 
+&lt;div id=&quot;container&quot;&gt;&lt;div style=&quot;position: relative; width: 928px; height: 954px;&quot; class=&quot;konvajs-content&quot; role=&quot;presentation&quot;&gt;&lt;canvas style=&quot;padding: 0px; margin: 0px; border: 0px none; background: transparent none repeat scroll 0% 0%; position: absolute; top: 0px; left: 0px; width: 928px; height: 954px;&quot; width=&quot;928&quot; height=&quot;954&quot;&gt;&lt;/canvas&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/body&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;/assets/konva.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;/assets/cellular-automata.js&quot;&gt;&lt;/script&gt;
+&lt;/html&gt;</content><author><name></name></author><category term="misc" /><summary type="html"></summary></entry></feed>
