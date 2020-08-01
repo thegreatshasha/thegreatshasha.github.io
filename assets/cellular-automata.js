@@ -68,7 +68,7 @@ function get_3x3_block(grid,i,j){
     return ret;
 }
 
-function alive_conway(neighbours, i,j){
+function alive_conway(neighbours){
     var count = sum_arr(neighbours)-neighbours[1][1];
     if(neighbours[1][1] == 1){
         if(count <2){
@@ -107,7 +107,7 @@ Cellular_automaton.prototype.get_next_grid = function(){
             if (i != 0 && j != 0){
                 neighbours = get_3x3_block(G,i,j);
                 var prev = this.grid_matrix[i-1][j-1];
-                this.grid_matrix[i-1][j-1] = alive_conway(neighbours,i,j);
+                this.grid_matrix[i-1][j-1] = alive_conway(neighbours);
                 if (this.grid_matrix[i-1][j-1] == prev){
                   this.steady++;
                 }

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-07-10T17:58:58+01:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Your awesome title</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><entry><title type="html">Welcome to Jekyll!</title><link href="http://localhost:4000/jekyll/update/2020/07/10/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Welcome to Jekyll!" /><published>2020-07-10T16:27:10+01:00</published><updated>2020-07-10T16:27:10+01:00</updated><id>http://localhost:4000/jekyll/update/2020/07/10/welcome-to-jekyll</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2020/07/10/welcome-to-jekyll.html">&lt;p&gt;In N-dimensional simplex noise, the squared kernel summation radius $r^2$ is $\frac 1 2$
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-08-01T16:42:22+01:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Your awesome title</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><entry><title type="html">Welcome to Jekyll!</title><link href="http://localhost:4000/jekyll/update/2020/07/10/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Welcome to Jekyll!" /><published>2020-07-10T16:27:10+01:00</published><updated>2020-07-10T16:27:10+01:00</updated><id>http://localhost:4000/jekyll/update/2020/07/10/welcome-to-jekyll</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2020/07/10/welcome-to-jekyll.html">&lt;p&gt;In N-dimensional simplex noise, the squared kernel summation radius $r^2$ is $\frac 1 2$
 for all values of N. This is because the edge length of the N-simplex $s = \sqrt {\frac {N} {N + 1}}$
 divides out of the N-simplex height $h = s \sqrt {\frac {N + 1} {2N}}$.
 The kerel summation radius $r$ is equal to the N-simplex height $h$.&lt;/p&gt;
@@ -46,11 +46,93 @@ The kerel summation radius $r$ is equal to the N-simplex height $h$.&lt;/p&gt;
   color: black;
 }
 &lt;/style&gt;
-
+&lt;script src=&quot;//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/highlight.min.js&quot;&gt;&lt;/script&gt;
 &lt;/head&gt;
 
 &lt;body&gt;
-&lt;div&gt;​ &lt;input id=&quot;start&quot; class=&quot;button start_button&quot; value=&quot;Start&quot; type=&quot;button&quot;&gt; &lt;input id=&quot;stop&quot; class=&quot;button stop_button&quot; value=&quot;Stop&quot; type=&quot;button&quot;&gt; &lt;input id=&quot;clear&quot; class=&quot;button stop_button&quot; value=&quot;Clear&quot; type=&quot;button&quot;&gt; &lt;input id=&quot;example&quot; class=&quot;button start_button&quot; value=&quot;Example&quot; type=&quot;button&quot;&gt; &lt;input id=&quot;random&quot; class=&quot;button start_button&quot; value=&quot;Random&quot; type=&quot;button&quot;&gt; 
+&lt;link rel=&quot;stylesheet&quot; href=&quot;//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/default.min.css&quot;&gt;
+&lt;h1&gt;Conway's Game of Life&lt;/h1&gt;
+The game of life is a ubiquitous example of complexity emerging from simple
+rules. The game takes place on a grid of cells. Each cell can take two states
+(dead or alive) which we show by black and white respectively. The state that a
+cell is in is determined by the states of it's eight adjacent cells.
+
+&lt;ul&gt;
+ &lt;li&gt;
+   If a cell is alive and:
+   &lt;ul&gt;
+     &lt;li&gt;
+       less than two adjacent cells are alive the, cell dies
+     &lt;/li&gt;
+     &lt;li&gt;
+       two or three adjacent cells are alive, nothing happens (keeps living)
+     &lt;/li&gt;
+     &lt;li&gt;
+      more than three adjacent cells are alive, the cell dies
+     &lt;/li&gt;
+   &lt;/ul&gt;
+ &lt;/li&gt;
+ &lt;li&gt;
+   If a cell is dead and:
+   &lt;ul&gt;
+     &lt;li&gt;
+        three adjacent cells are alive, the cell becomes alive (reborn)
+      &lt;/li&gt;
+    &lt;/ul&gt;
+ &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1&gt;Implementation&lt;/h1&gt;
+
+We will use javascript to construct a minimal implementation of Conway's game of life.
+
+We start by defining a cellular automaton object in javascript.
+
+The implementation is based upon an $N\times N$ matrix, where $N$ is the number of cells in the game, and
+is implemented as the Cellular\_automaton prototype.
+
+&lt;pre&gt;&lt;code class=&quot;Javascript&quot;&gt;
+function Cellular_automaton(grid, size, stage, layer){
+        this.grid_matrix = grid;
+        this.size = size;
+        this.stage = stage;
+        this.layer = layer;
+        this.update_stage();
+        this.steady = 0;
+    }
+&lt;/code&gt;&lt;/pre&gt;
+the parameters, stage and layer are used for animation with Konva.js, grid is a square matrix and size is its dimension. The core
+functionality comes through the update function
+&lt;pre&gt;&lt;code class=&quot;Javascript&quot;&gt;
+Cellular_automaton.prototype.get_next_grid = function(){
+  this.steady=0;
+    // a zero padded (N+2)x(N+2) matrix
+    var G = incase(this.grid_matrix);
+    n=G.length;
+    for (var i=0;i&lt;n-1;i++){
+        for (var j=0; j&lt;n-1;j++){
+            // indices i and j are relative to G
+            // so the cell is index (i-1,j-1)
+            if (i != 0 &amp;&amp; j != 0){
+                // get cell (i-1,j-2)'s neighbours
+                neighbours = get_3x3_block(G,i,j);
+                var prev = this.grid_matrix[i-1][j-1];
+                // determine if cell (i-1,j-1) is alive
+                this.grid_matrix[i-1][j-1] = alive_conway(neighbours);
+                if (this.grid_matrix[i-1][j-1] == prev){
+                  // used to determine stopping
+                  this.steady++;
+                }
+            }
+        }
+    }
+    console.log(this.steady)
+}
+&lt;/code&gt;&lt;/pre&gt;
+This function loops through each cell in the grid and returns a new grid with the states
+in the next time step. We begin by computing $G$, a zero-padded $N+2\times N+2$ matrix, which
+we use to apply the non-periodic boundary conditions. Looping through each cell of $G$ we determine the neighbours of each cell and whether the cell is alive in the next step.
+&lt;div&gt;​ &lt;input id=&quot;start&quot; class=&quot;button start_button&quot; value=&quot;Start&quot; type=&quot;button&quot;&gt; &lt;input id=&quot;stop&quot; class=&quot;button stop_button&quot; value=&quot;Stop&quot; type=&quot;button&quot;&gt; &lt;input id=&quot;clear&quot; class=&quot;button stop_button&quot; value=&quot;Clear&quot; type=&quot;button&quot;&gt; &lt;input id=&quot;example&quot; class=&quot;button start_button&quot; value=&quot;Example&quot; type=&quot;button&quot;&gt; &lt;input id=&quot;random&quot; class=&quot;button start_button&quot; value=&quot;Random&quot; type=&quot;button&quot;&gt;
 &lt;div id=&quot;container&quot;&gt;&lt;div style=&quot;position: relative; width: 928px; height: 954px;&quot; class=&quot;konvajs-content&quot; role=&quot;presentation&quot;&gt;&lt;canvas style=&quot;padding: 0px; margin: 0px; border: 0px none; background: transparent none repeat scroll 0% 0%; position: absolute; top: 0px; left: 0px; width: 928px; height: 954px;&quot; width=&quot;928&quot; height=&quot;954&quot;&gt;&lt;/canvas&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;/body&gt;
 &lt;script type=&quot;text/javascript&quot; src=&quot;/assets/konva.js&quot;&gt;&lt;/script&gt;

@@ -28,11 +28,93 @@ categories: misc
   color: black;
 }
 </style>
-
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/highlight.min.js"></script>
 </head>
 
 <body>
-<div>​ <input id="start" class="button start_button" value="Start" type="button"> <input id="stop" class="button stop_button" value="Stop" type="button"> <input id="clear" class="button stop_button" value="Clear" type="button"> <input id="example" class="button start_button" value="Example" type="button"> <input id="random" class="button start_button" value="Random" type="button"> 
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/default.min.css">
+<h1>Conway's Game of Life</h1>
+The game of life is a ubiquitous example of complexity emerging from simple
+rules. The game takes place on a grid of cells. Each cell can take two states
+(dead or alive) which we show by black and white respectively. The state that a
+cell is in is determined by the states of it's eight adjacent cells.
+
+<ul>
+ <li>
+   If a cell is alive and:
+   <ul>
+     <li>
+       less than two adjacent cells are alive the, cell dies
+     </li>
+     <li>
+       two or three adjacent cells are alive, nothing happens (keeps living)
+     </li>
+     <li>
+      more than three adjacent cells are alive, the cell dies
+     </li>
+   </ul>
+ </li>
+ <li>
+   If a cell is dead and:
+   <ul>
+     <li>
+        three adjacent cells are alive, the cell becomes alive (reborn)
+      </li>
+    </ul>
+ </li>
+</ul>
+
+<h1>Implementation</h1>
+
+We will use javascript to construct a minimal implementation of Conway's game of life.
+
+We start by defining a cellular automaton object in javascript.
+
+The implementation is based upon an $N\times N$ matrix, where $N$ is the number of cells in the game, and
+is implemented as the Cellular\_automaton prototype.
+
+<pre><code class="Javascript">
+function Cellular_automaton(grid, size, stage, layer){
+        this.grid_matrix = grid;
+        this.size = size;
+        this.stage = stage;
+        this.layer = layer;
+        this.update_stage();
+        this.steady = 0;
+    }
+</code></pre>
+the parameters, stage and layer are used for animation with Konva.js, grid is a square matrix and size is its dimension. The core
+functionality comes through the update function
+<pre><code class="Javascript">
+Cellular_automaton.prototype.get_next_grid = function(){
+  this.steady=0;
+    // a zero padded (N+2)x(N+2) matrix
+    var G = incase(this.grid_matrix);
+    n=G.length;
+    for (var i=0;i<n-1;i++){
+        for (var j=0; j<n-1;j++){
+            // indices i and j are relative to G
+            // so the cell is index (i-1,j-1)
+            if (i != 0 && j != 0){
+                // get cell (i-1,j-2)'s neighbours
+                neighbours = get_3x3_block(G,i,j);
+                var prev = this.grid_matrix[i-1][j-1];
+                // determine if cell (i-1,j-1) is alive
+                this.grid_matrix[i-1][j-1] = alive_conway(neighbours);
+                if (this.grid_matrix[i-1][j-1] == prev){
+                  // used to determine stopping
+                  this.steady++;
+                }
+            }
+        }
+    }
+    console.log(this.steady)
+}
+</code></pre>
+This function loops through each cell in the grid and returns a new grid with the states
+in the next time step. We begin by computing $G$, a zero-padded $N+2\times N+2$ matrix, which
+we use to apply the non-periodic boundary conditions. Looping through each cell of $G$ we determine the neighbours of each cell and whether the cell is alive in the next step.
+<div>​ <input id="start" class="button start_button" value="Start" type="button"> <input id="stop" class="button stop_button" value="Stop" type="button"> <input id="clear" class="button stop_button" value="Clear" type="button"> <input id="example" class="button start_button" value="Example" type="button"> <input id="random" class="button start_button" value="Random" type="button">
 <div id="container"><div style="position: relative; width: 928px; height: 954px;" class="konvajs-content" role="presentation"><canvas style="padding: 0px; margin: 0px; border: 0px none; background: transparent none repeat scroll 0% 0%; position: absolute; top: 0px; left: 0px; width: 928px; height: 954px;" width="928" height="954"></canvas></div></div>
 </body>
 <script type="text/javascript" src="/assets/konva.js"></script>
